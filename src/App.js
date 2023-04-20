@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import SearchInput from './components/SearchInput/SearchInput';
+import UserList from './components/UsersList/UserList';
+
 
 function App() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [users, setUsers] = useState([]);
+  
+// Fetch Data from Api 
+  useEffect(() => {
+    fetch('http://www.mocky.io/v2/5ba8efb23100007200c2750c')
+      .then(response => response.json())
+      .then(data => setUsers(data))
+      .catch(error => console.log(error));
+  }, []);
+
+  const handleSearch = event => {
+    setSearchQuery(event.target.value);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <SearchInput value={searchQuery} onChange={handleSearch} />
+      <UserList users={users} searchQuery={searchQuery} />
     </div>
   );
 }
