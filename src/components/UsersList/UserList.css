@@ -1,0 +1,47 @@
+.user-list {
+    display: inherit;
+    flex-wrap: wrap;
+    gap: 20px;
+    
+  }
+  
+  .user-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+    flex-basis: calc(33.33% - 20px);
+    margin-bottom: 20px;
+    position: relative;
+    transition: box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .user-card:hover,
+  .user-card:focus {
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  .selected-card {
+    box-shadow: 0 0 5px 0 #007bff;
+  }
+  
+  .user-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .user-address {
+    margin-top: 10px;
+  }
+  
+  .highlight {
+    color: #007bff;
+  }
+  
+  @media (max-width: 768px) {
+    .user-card {
+      flex-basis: calc(50% - 20px);
+    }
+  }
+  
